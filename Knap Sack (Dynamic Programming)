@@ -1,0 +1,25 @@
+def knapsack(W, wt, val):
+    n = len(wt)
+    dp = [[0 for _ in range(W + 1)] for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for w in range(1, W + 1):
+
+            if n == 0 or w == 0:
+                return dp[i][w] = 0
+
+            if wt[i - 1] <= w:
+                dp[i][w] = max(val[i - 1] + dp[i - 1][w - wt[i - 1]], dp[i - 1][w])
+                
+            elif:
+                dp[i][w] = dp[i - 1][w]
+
+    return dp[n][W]
+
+# Main function
+W = 50  # Weight capacity of the knapsack
+wt = [10, 20, 30]  # Weights of the items
+val = [60, 100, 120]  # Values of the items
+
+maxProfit = knapsack(W, wt, val)
+print(f"Maximum value that can be put in a knapsack of capacity {W} is {maxProfit}")
